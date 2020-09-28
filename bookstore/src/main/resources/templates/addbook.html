@@ -15,15 +15,16 @@ xmlns:th="http://www.thymeleaf.org">
 			<p>Title: <input type="text" th:field="*{title}" /></p>
 			<p>ISBN: <input type="text" th:field="*{isbn}" /></p>
 			<p>Year: <input type="text" th:field="*{year}" /></p>
+			<label>Category</label>
+				<select th:field="*{category}" class="form-control">
+					<option th:each="category: ${categories}"
+				th:value="${category.categoryid}"
+				th:text="${category.name}"></option>
+				</select>
 			<p><input type="submit" value="Submit" /></p>
 		</form>
 		
-		<label>Category</label>
-		<select th:field="*{categories}" class="form-control">
-		<option th:each="category: ${categories}"
-				th:value="${category.categoryid}"
-				th:text="${category.name}"></option>
-		</select>
+		
 		
 	</body>
 </html>

@@ -46,11 +46,11 @@ public class BookstoreApplication {
         	}
         	
         	log.info("some books");
-        	repository.save(new Book("Crime and Punishment", "Fedor Dostoyevskiy", 2000, 978078, 10, catrep.findByName("Fiction")));
-        	repository.save(new Book("Hands-On Full Stack Development", "Juha Hinkula", 2019, 1838822364, 10, catrep.findByName("Fiction")));
-        	repository.save(new Book("Java Garage", "Eben Hewitt", 2004, 0321246233, 20, catrep.findByName("Fiction")));
-        	repository.save(new Book("Java threads", "Scott Oaks", 2004, 596007825, 25, catrep.findByName("Fiction")));
-        	repository.save(new Book("Optimizing Java", "Doug Hawkins", 2015, 1771374861,25, catrep.findByName("Fiction")));
+        	repository.save(new Book("Crime and Punishment", "Fedor Dostoyevskiy", 2000, 978078, 10, catrep.findByName("Fiction").get(0)));
+        	repository.save(new Book("Hands-On Full Stack Development", "Juha Hinkula", 2019, 1838822364, 10, catrep.findByName("Fiction").get(0)));
+        	repository.save(new Book("Java Garage", "Eben Hewitt", 2004, 0321246233, 20, catrep.findByName("Fiction").get(0)));
+        	repository.save(new Book("Java threads", "Scott Oaks", 2004, 596007825, 25, catrep.findByName("Fiction").get(0)));
+        	repository.save(new Book("Optimizing Java", "Doug Hawkins", 2015, 1771374861,25, catrep.findByName("Fiction").get(0)));
         	
         	log.info("fetch all books");
         	for(Book Book : repository.findAll()) {
@@ -63,4 +63,3 @@ public class BookstoreApplication {
         };
       } 
     }
-

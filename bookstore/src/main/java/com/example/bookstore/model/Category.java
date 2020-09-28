@@ -1,3 +1,4 @@
+
 package com.example.bookstore.model;
 
 import java.util.List;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Category {
 	
@@ -17,8 +20,9 @@ public class Category {
 	public long categoryid;
 	private String name;
 	
+	@JsonBackReference
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="category")
-
+	
 	private List<Book> book;
 
 	
