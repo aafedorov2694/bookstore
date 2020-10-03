@@ -81,8 +81,8 @@ public class BookstoreController {
 
 	@RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
 	
-	public String modifyBook(@PathVariable("id") Long bookId, Model model) {
-		model.addAttribute("book", repository.findById(bookId));
+	public String modifyBook(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("book", repository.findById(id));
 		model.addAttribute("categories", catrep.findAll());
 	
 		return "modifybook";
