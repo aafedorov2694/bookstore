@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bookstore.model.Book;
 import com.example.bookstore.model.BookRepository;
 import com.example.bookstore.model.CategoryRepository;
+
 
 @Controller
 public class BookstoreController {
@@ -26,18 +28,19 @@ public class BookstoreController {
 	@Autowired
 	private CategoryRepository catrep;
 	
-	@RequestMapping (value = "/api/{id}", method = RequestMethod.GET)
+//----------RESTful Controllers--------------------------
+	@RequestMapping (value = "/book/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Book> bookid(@PathVariable("id") Long id){
 		return repository.findById(id);
 	}
 	
 	
-	@RequestMapping (value = "/api", method = RequestMethod.GET)
+	@RequestMapping (value = "/book", method = RequestMethod.GET)
 	public @ResponseBody List<Book> studentListRest(){
 		return (List<Book>)repository.findAll();
 	}
 	
-	
+	//-------------------------------//
 
 	@RequestMapping(value = {"/", "/booklist"})
 	public String ShowBooks(Model model) {
