@@ -12,6 +12,10 @@ import com.example.bookstore.model.Book;
 import com.example.bookstore.model.BookRepository;
 import com.example.bookstore.model.Category;
 import com.example.bookstore.model.CategoryRepository;
+import com.example.bookstore.model.User;
+import com.example.bookstore.model.UserRepository;
+
+
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,6 +25,9 @@ public class BookstoreApplication {
 	@Autowired
 	private CategoryRepository catrep;
 	
+	@Autowired
+	private UserRepository urepository;
+	
 	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 	
 	public static void main(String[] args) {
@@ -29,7 +36,7 @@ public class BookstoreApplication {
 
 	  @Bean
 
-     public CommandLineRunner runner(BookRepository repository, CategoryRepository catrep){
+     public CommandLineRunner runner(BookRepository repository, CategoryRepository catrep, UserRepository urepository ){
         return args -> {
         	
         	
@@ -52,12 +59,24 @@ public class BookstoreApplication {
         	repository.save(new Book("Java threads", "Scott Oaks", 2004, 596007825, 25, catrep.findByName("Fiction").get(0)));
         	repository.save(new Book("Optimizing Java", "Doug Hawkins", 2015, 1771374861,25, catrep.findByName("Fiction").get(0)));
         	
-        	log.info("fetch all books");
-        	for(Book Book : repository.findAll()) {
-        			log.info(Book.toString());
+        
         			
+        			
+        			log.info("some users");
+        			User user1 = new User("user", "$2a$10$a3bG.2M0LEg4aCq9ycVa6etLQZ7D7tou5lcAkckY9LUVOU8GZVPqG", "user@gmail.com", "USER");
+        			User user2 = new User("admin", "$2a$10$cbouXPh/kSf50SSv1AA1a.l99DaaEmBqTFmxhnmejVBAfRNQ5d1LS", "admin@gmail.com", "ADMIN");
+        			
+        			urepository.save(user1);
+        			urepository.save(user2);
+        			
+        			log.info("fetch all books");
+                	for(Book Book : repository.findAll()) {
+                			log.info(Book.toString());
+                			
+                			
         	
         	}
+                	
         
         	
         };

@@ -20,7 +20,7 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
 					<th>ISBN</th>
 					<th>Year</th>
 					<th>Category</th>
-					<th sec:authorize="hasRole('ADMIN')"></th>
+					<th sec:authorize="hasAuthority('ADMIN')"></th>
 					<th></th>
 				</tr>
 				
@@ -30,7 +30,7 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
 					<td th:text = "${book.isbn}" >
 					<td th:text = "${book.year}" >
 					<td th:text = "${book.category.name}" >
-					<td sec:authorize="hasRole('ADMIN')"  ><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"  ><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
 					<td><a th:href="@{/modify/{id}(id=${book.id})}">Modify</a></td>    
 				</tr>
 			</table>
