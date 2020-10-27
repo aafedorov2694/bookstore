@@ -45,6 +45,15 @@ public class Category {
 		this.name = name;
 	}
 
+	
+	public long getCategoryid() {
+		return categoryid;
+	}
+
+	public void setCategoryid(long categoryid) {
+		this.categoryid = categoryid;
+	}
+
 	public List<Book> getBook() {
 		return book;
 	}
@@ -56,7 +65,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [name=" + name + "]";
+		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
 	}
 	
 	
