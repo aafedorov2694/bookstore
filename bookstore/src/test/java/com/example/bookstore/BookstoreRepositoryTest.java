@@ -65,7 +65,7 @@ public class BookstoreRepositoryTest {
 	
 	
 	@Test
-	public void createRep() {
+	public void createCat() {
 		Category testcat = new Category("Coding");
 		catRps.save(testcat);
 		
